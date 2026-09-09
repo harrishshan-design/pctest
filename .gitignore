@@ -1,0 +1,12 @@
+node_modules/
+dist/
+qa/
+.env
+.env.*
+*.local
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
