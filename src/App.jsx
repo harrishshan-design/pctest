@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowRight, Certificate, CheckCircle, GlobeHemisphereWest, List, Moon, Sparkle, Sun, Timer, X } from "@phosphor-icons/react";
 
+const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
+
 const navigation = [
   ["Capabilities", "#manufacturing"],
   ["ODM / OEM", "#manufacturing"],
@@ -16,10 +18,10 @@ const chapters = [
 ];
 
 const operations = [
-  ["Production floor", "/assets/factory-lab.jpg", "PCG production team operating filling equipment"],
-  ["R&D and testing", "/assets/manufacturing-oem.jpg", "Laboratory testing in product development"],
-  ["Automated packaging", "/assets/factory-quality.jpg", "Automated packaging line handling finished cartons"],
-  ["Finished products", "/assets/product-cosmetics.jpg", "Finished personal care and cosmetic packaging"],
+  ["Production floor", asset("factory-lab.jpg"), "PCG production team operating filling equipment"],
+  ["R&D and testing", asset("manufacturing-oem.jpg"), "Laboratory testing in product development"],
+  ["Automated packaging", asset("factory-quality.jpg"), "Automated packaging line handling finished cartons"],
+  ["Finished products", asset("product-cosmetics.jpg"), "Finished personal care and cosmetic packaging"],
 ];
 
 const proofPoints = [
@@ -35,7 +37,7 @@ const services = [
     title: "Your idea. Our development expertise.",
     bestFor: "Best when you need formulation, packaging and regulatory support.",
     formValue: "ODM — develop my product",
-    image: "/assets/factory-odm.jpg",
+    image: asset("factory-odm.jpg"),
     href: "https://pcgroup.com.my/odm/",
     steps: ["Market study and product R&D", "Raw material and packaging selection", "Testing and regulatory compliance", "Manufacturing, filling and logistics"],
   },
@@ -45,17 +47,17 @@ const services = [
     title: "Your specification. Our manufacturing.",
     bestFor: "Best when your formula, product brief or specification is established.",
     formValue: "OEM — manufacture my specification",
-    image: "/assets/factory-oem.jpg",
+    image: asset("factory-oem.jpg"),
     href: "https://pcgroup.com.my/oem/",
     steps: ["Supply-chain and material sourcing", "Flexible mixing for different order scales", "Filling across modern packaging formats", "Quality control through distribution"],
   },
 ];
 
 const products = [
-  ["Home Care", "/assets/product-home-care.jpg", "https://pcgroup.com.my/our-products/#homecare"],
-  ["Personal Care", "/assets/product-personal-care.jpg", "https://pcgroup.com.my/our-products/#personal-care"],
-  ["Food, Flavours & Colouring", "/assets/product-flavours.jpg", "https://pcgroup.com.my/our-products/#food"],
-  ["Cosmetics", "/assets/product-cosmetics.jpg", "https://pcgroup.com.my/our-products/#cosmetics"],
+  ["Home Care", asset("product-home-care.jpg"), "https://pcgroup.com.my/our-products/#homecare"],
+  ["Personal Care", asset("product-personal-care.jpg"), "https://pcgroup.com.my/our-products/#personal-care"],
+  ["Food, Flavours & Colouring", asset("product-flavours.jpg"), "https://pcgroup.com.my/our-products/#food"],
+  ["Cosmetics", asset("product-cosmetics.jpg"), "https://pcgroup.com.my/our-products/#cosmetics"],
 ];
 
 const briefSignals = [
@@ -71,7 +73,7 @@ const briefSignals = [
 function SectionRail({ label, tone = "mint", mark = "teal" }) {
   return (
     <aside className={`section-rail section-rail--${tone}`} aria-hidden="true">
-      <img className="rail-logo-spin" src={`/assets/pcg-mark-${mark}.png`} alt="" />
+      <img className="rail-logo-spin" src={asset(`pcg-mark-${mark}.png`)} alt="" />
       <span>{label}</span>
     </aside>
   );
@@ -84,8 +86,8 @@ function ExperienceMarquee() {
       <div className="experience-track" aria-hidden="true">
         {[0, 1].map((group) => (
           <div className="experience-group" key={group}>
-            <strong>Years of manufacturing experience</strong><img src="/assets/pcg-mark-mint.png" alt="" />
-            <strong>Built in Malaysia. Made for markets.</strong><img src="/assets/pcg-mark-mint.png" alt="" />
+            <strong>Years of manufacturing experience</strong><img src={asset("pcg-mark-mint.png")} alt="" />
+            <strong>Built in Malaysia. Made for markets.</strong><img src={asset("pcg-mark-mint.png")} alt="" />
           </div>
         ))}
       </div>
@@ -243,7 +245,7 @@ export function App() {
 
       <div className={`nav-scrim ${menuOpen ? "nav-scrim--open" : ""}`} onClick={closeMenu} aria-hidden="true" />
       <nav id="site-navigation" className={`site-navigation ${menuOpen ? "site-navigation--open" : ""}`} aria-label="Primary navigation">
-        <img className="nav-mark" src="/assets/pcg-mark-mint.png" alt="" />
+        <img className="nav-mark" src={asset("pcg-mark-mint.png")} alt="" />
         <div className="nav-kicker">Premier Centre Group</div>
         <ul>
           {navigation.map(([label, href]) => (
@@ -269,12 +271,12 @@ export function App() {
           <div className="hero-clouds" aria-hidden="true" />
           <div className="hero-shade" aria-hidden="true" />
           <div className="hero-rail" aria-hidden="true">
-            <img className="top-logo-spin" src="/assets/pcg-mark-mint.png" alt="" />
+            <img className="top-logo-spin" src={asset("pcg-mark-mint.png")} alt="" />
             <span>Premier Centre Group</span>
           </div>
           <header className="hero-header">
             <a className="hero-brand" href="#home" aria-label="Premier Centre Group home">
-              <img src="/assets/pcg-wordmark.png" alt="Premier Centre Group" />
+              <img src={asset("pcg-wordmark.png")} alt="Premier Centre Group" />
             </a>
             <nav className="hero-nav" aria-label="Homepage">
               {navigation.map(([label, href]) => <a href={href} key={`${label}-${href}`}>{label}</a>)}
@@ -452,7 +454,7 @@ export function App() {
       </main>
 
       <footer>
-        <img src="/assets/pcg-wordmark.png" alt="Premier Centre Group" />
+        <img src={asset("pcg-wordmark.png")} alt="Premier Centre Group" />
         <div className="footer-meta">
           <p>© 2026 Premier Centre Group Sdn. Bhd. All rights reserved.</p>
           <button
